@@ -2,14 +2,10 @@ package app.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
 
 @Entity
 @Table(name = "students")
@@ -24,10 +20,8 @@ public class Student extends AbstractEntity {
     @Column(name = "age")
     private Integer age;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreationTimestamp
     @Column(name = "date_of_birthday")
-    private Date dateOfBirthday;
+    private String dateOfBirthday;
 
     @Column(name = "faculty")
     private String faculty;
@@ -59,11 +53,11 @@ public class Student extends AbstractEntity {
         this.age = age;
     }
 
-    public Date getDateOfBirthday() {
+    public String getDateOfBirthday() {
         return dateOfBirthday;
     }
 
-    public void setDateOfBirthday(Date dateOfBirthday) {
+    public void setDateOfBirthday(String dateOfBirthday) {
         this.dateOfBirthday = dateOfBirthday;
     }
 

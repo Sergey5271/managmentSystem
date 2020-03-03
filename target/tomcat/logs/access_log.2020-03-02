@@ -1,4 +1,0 @@
-0:0:0:0:0:0:0:1 - - [02/Mar/2020:18:16:36 +0200] "GET /student/list HTTP/1.1" 200 1483 http-bio-8080-exec-1 793
-0:0:0:0:0:0:0:1 - - [02/Mar/2020:18:16:36 +0200] "GET /student/list HTTP/1.1" 200 1483 http-bio-8080-exec-3 6
-0:0:0:0:0:0:0:1 - - [02/Mar/2020:18:16:38 +0200] "GET /report HTTP/1.1" 404 949 http-bio-8080-exec-4 5
-0:0:0:0:0:0:0:1 - - [02/Mar/2020:18:16:46 +0200] "GET /report/save HTTP/1.1" 200 4096 http-bio-8080-exec-5 134

@@ -1,53 +1,93 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
+
 <head><%@ page isELIgnored="false" %>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>javaguides.net</title>
+    <title>Main</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-<div class="container">
-    <div class="col-md-offset-1 col-md-10">
 
-        <br/><br/>
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="panel-title">Student List</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">Managment System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="showForm">Add Student</a>
+                <a class="nav-item nav-link" href="/report">Download Excel Document</a>
             </div>
-            <div class="panel-body">
-                <table class="table table-striped table-bordered">
+        </div>
+    </nav>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Date of birthday</th>
+                    <th scope="col">Faculty</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="tempStudent" items="${students}">
+
+                    <c:url var="updateLink" value="/student/updateForm">
+                        <c:param name="studentId" value="${tempStudent.id}" />
+                    </c:url>
+
+                    <c:url var="deleteLink" value="/student/delete">
+                        <c:param name="studentId" value="${tempStudent.id}" />
+                    </c:url>
+
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Age</th>
-                        <th>Date Of Birthday</th>
-                        <th>Faculty</th>
+                        <td>${tempStudent.firstName}</td>
+                        <td>${tempStudent.lastName}</td>
+                        <td>${tempStudent.age}</td>
+                        <td>${tempStudent.dateOfBirthday}</td>
+                        <td>${tempStudent.faculty}</td>
+                        <td>
+                            <a href="${updateLink}">Edit</a>
+                            <a href="${deleteLink}">Delete</a>
+                        </td>
                     </tr>
-
-                    <!-- loop over and print our customers -->
-                    <c:forEach var="tempCustomer" items="${students}">
-                        <tr>
-                            <td>${tempCustomer.firstName}</td>
-                            <td>${tempCustomer.lastName}</td>
-                            <td>${tempCustomer.age}</td>
-                            <td>${tempCustomer.dateOfBirthday}</td>
-                            <td>${tempCustomer.faculty}</td>
-                        </tr>
-                    </c:forEach>
-
-                </table>
-
-            </div>
-
-            <div align="center">
-                <h1>Spring MVC Excel View(Apache POI)</h1>
-                <h3><a href="/report">Download Excel Document</a></h3>
-            </div>
+                </c:forEach>
+            </tbody>
+        </table>
+        <div id="pagination">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 
-</div>
 </body>
+
 </html>

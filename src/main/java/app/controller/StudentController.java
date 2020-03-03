@@ -5,11 +5,9 @@ import app.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,7 +35,7 @@ public class StudentController {
     public String showFormForAdd(Model model) {
         Student student = new Student();
         model.addAttribute("student", student);
-        return "student-from";
+        return "student-form";
     }
 
     @PostMapping("/saveStudent")
@@ -46,7 +44,7 @@ public class StudentController {
         return "redirect:/student/list";
     }
 
-    @PutMapping("/updateForm")
+    @GetMapping("/updateForm")
     public String showFormForUpdate(@RequestParam("studentId") int id, Model model) {
         Student student = studentService.getStudent(id);
         model.addAttribute("student", student);
@@ -54,7 +52,7 @@ public class StudentController {
 
     }
 
-    @DeleteMapping("delete")
+    @GetMapping("delete")
     public String deleteStudent(@RequestParam("studentId") int id) {
         studentService.deleteStudent(id);
         return "redirect:/student/list";

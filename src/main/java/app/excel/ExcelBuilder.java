@@ -14,15 +14,15 @@ import java.util.Map;
 public class ExcelBuilder extends AbstractXlsView {
     @Override
     protected void buildExcelDocument(Map<String, Object> map, Workbook workbook, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
-        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=\"student.xls\"");
+        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=\"students.xls\"");
         List<Student> studentList = (List<Student>) map.get("studentList");
         Sheet sheet = workbook.createSheet("Student Data");
         Row header = sheet.createRow(0);
         header.createCell(0).setCellValue("Student name");
         header.createCell(1).setCellValue("Student surname");
         header.createCell(2).setCellValue("Student age");
-        header.createCell(2).setCellValue("Student date of birthday");
-        header.createCell(2).setCellValue("Student faculty");
+        header.createCell(3).setCellValue("Student date of birthday");
+        header.createCell(4).setCellValue("Student faculty");
 
         int rowNum = 1;
         for (Student student : studentList) {

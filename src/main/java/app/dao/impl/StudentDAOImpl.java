@@ -23,6 +23,7 @@ public class StudentDAOImpl implements StudentDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Student> getStudents() {
         Session session = sessionFactory.getCurrentSession();
@@ -32,7 +33,6 @@ public class StudentDAOImpl implements StudentDAO {
         criteriaQuery.select(root);
         Query query = session.createQuery(criteriaQuery);
         return query.getResultList();
-
     }
 
     @Override

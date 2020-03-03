@@ -22,7 +22,7 @@ public class ReportController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/save")
+    @GetMapping
     public ModelAndView getExcel() {
         List<Student> studentList = studentService.getStudents();
         return new ModelAndView(new ExcelBuilder(), "studentList", studentList);
