@@ -33,7 +33,7 @@
             </div>
         </div>
     </nav>
-
+    <c:set value="${userList}" var="userPageList" />
     <div class="container">
         <table class="table">
             <thead>
@@ -47,7 +47,8 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="tempStudent" items="${students}">
+
+                <c:forEach items="${userPageList.pageList}" var="tempStudent">
 
                     <c:url var="updateLink" value="/student/updateForm">
                         <c:param name="studentId" value="${tempStudent.id}" />
@@ -71,6 +72,41 @@
                 </c:forEach>
             </tbody>
         </table>
+
+        <c:choose>
+            <%-- Show Prev as link if not on first page --%>
+            <c:when test="${userPageList.firstPage}">
+                <span>Prev</span>
+            </c:when>
+            <c:otherwise>
+                <c:url value="/student/prev" var="url" />
+                <a href='<c:out value="${url}" />'>Prev</a>
+            </c:otherwise>
+        </c:choose>
+        <c:forEach begin="1" end="${userPageList.pageCount}" step="1" varStatus="tagStatus">
+            <c:choose>
+                <%-- In PagedListHolder page count starts from 0 --%>
+                <c:when test="${(userPageList.page + 1) == tagStatus.index}">
+                    <span>${tagStatus.index}</span>
+                </c:when>
+                <c:otherwise>
+                    <c:url value="/student/${tagStatus.index}" var="url" />
+                    <a href='<c:out value="${url}" />'>${tagStatus.index}</a>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:choose>
+            <%-- Show Next as link if not on last page --%>
+            <c:when test="${userPageList.lastPage}">
+                <span>Next</span>
+            </c:when>
+            <c:otherwise>
+                <c:url value="/student/next" var="url" />
+                <a href='<c:out value="${url}" />'>Next</a>
+            </c:otherwise>
+        </c:choose>
+
+
         <div id="pagination">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
