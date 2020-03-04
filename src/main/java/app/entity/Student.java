@@ -6,24 +6,40 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "students")
 public class Student extends AbstractEntity {
 
     @Column(name = "first_name")
+    @Size(min = 1, max = 20, message =
+            "About Me must be between 1 and 50 characters")
+    @NotNull
     private String firstName;
 
     @Column(name = "last_name")
+    @Size(min = 1, max = 20, message =
+            "About Me must be between 1 and 50 characters")
+    @NotNull
     private String lastName;
 
     @Column(name = "age")
+    @Min(value = 1, message = "Age should not be less than 18")
+    @Max(value = 150, message = "Age should not be greater than 150")
+    @NotNull
     private Integer age;
 
     @Column(name = "date_of_birthday")
+    @NotNull
     private String dateOfBirthday;
 
     @Column(name = "faculty")
+    @NotNull
+    @Size(min = 1, max = 20)
     private String faculty;
 
     public Student() {

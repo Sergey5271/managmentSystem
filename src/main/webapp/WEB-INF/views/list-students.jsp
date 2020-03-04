@@ -28,7 +28,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" id = "myBtn" href="showForm">Add Student</a>
+                <a class="nav-item nav-link" href="showForm">Add Student</a>
                 <a class="nav-item nav-link" href="/report">Download Excel Document</a>
             </div>
         </div>
