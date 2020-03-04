@@ -13,11 +13,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+    <style>
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+</style>
+
 </head>
 
 <body>
 
     <h2 align="center">Add or Edit student</h2>
+    <div class="modal-content">
     <div class="container">
         <form:form action="saveStudent" method="POST" modelAttribute="student">
 
@@ -61,7 +73,7 @@
             <button type="submit" class="btn btn-primary" value="submit">Submit</button>
         </form:form>
     </div>
-
+    </div>
 </body>
 
 </html>
