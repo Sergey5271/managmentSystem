@@ -38,14 +38,14 @@
             <div class="form-group">
                 <label>Name</label>
                 <td>
-                    <form:input path="firstName" class="form-control" maxlength="20" size="20"/>
+                    <form:input path="firstName" class="form-control" maxlength="20" size="20" pattern="[A-Za-z]{1,20}"/>
                 </td>
             </div>
 
             <div class="form-group">
                 <label>Surname</label>
                 <td>
-                    <form:input path="lastName" class="form-control" maxlength="20" size="20"/>
+                    <form:input path="lastName" class="form-control" maxlength="20" size="20" pattern="[A-Za-z]{1,20}"/>
                 </td>
             </div>
 
@@ -66,7 +66,7 @@
             <div class="form-group">
                 <label>faculty</label>
                 <td>
-                    <form:input path="faculty" class="form-control" maxlength="20" size="20" />
+                    <form:input path="faculty" class="form-control" maxlength="20" size="20" pattern="[A-Za-z]{1,20}"/>
                 </td>
             </div>
 
