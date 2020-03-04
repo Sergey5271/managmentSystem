@@ -28,11 +28,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="showForm">Add Student</a>
+                <a class="nav-item nav-link" id = "myBtn" href="showForm">Add Student</a>
                 <a class="nav-item nav-link" href="/report">Download Excel Document</a>
             </div>
         </div>
     </nav>
+    <br />
     <c:set value="${userList}" var="userPageList" />
     <div class="container">
         <table class="table">
@@ -73,55 +74,28 @@
             </tbody>
         </table>
 
-        <c:choose>
-            <%-- Show Prev as link if not on first page --%>
-            <c:when test="${userPageList.firstPage}">
-                <span>Prev</span>
-            </c:when>
-            <c:otherwise>
-                <c:url value="/student/prev" var="url" />
-                <a href='<c:out value="${url}" />'>Prev</a>
-            </c:otherwise>
-        </c:choose>
-        <c:forEach begin="1" end="${userPageList.pageCount}" step="1" varStatus="tagStatus">
-            <c:choose>
-                <%-- In PagedListHolder page count starts from 0 --%>
-                <c:when test="${(userPageList.page + 1) == tagStatus.index}">
-                    <span>${tagStatus.index}</span>
-                </c:when>
-                <c:otherwise>
-                    <c:url value="/student/${tagStatus.index}" var="url" />
-                    <a href='<c:out value="${url}" />'>${tagStatus.index}</a>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-        <c:choose>
-            <%-- Show Next as link if not on last page --%>
-            <c:when test="${userPageList.lastPage}">
-                <span>Next</span>
-            </c:when>
-            <c:otherwise>
-                <c:url value="/student/next" var="url" />
-                <a href='<c:out value="${url}" />'>Next</a>
-            </c:otherwise>
-        </c:choose>
-
-
-        <div id="pagination">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    </div>
+    <div id="pagination">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <c:forEach begin="1" end="${userPageList.pageCount}" step="1" varStatus="tagStatus">
+                    <c:choose>
+                        <%-- In PagedListHolder page count starts from 0 --%>
+                        <c:when test="${(userPageList.page + 1) == tagStatus.index}">
+                            <li class="page-item">
+                                <a class="page-link">${tagStatus.index}</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <c:url value="/student/${tagStatus.index}" var="url" />
+                                <a class="page-link" href='<c:out value="${url}" />'>${tagStatus.index}</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </ul>
+        </nav>
     </div>
 
 </body>

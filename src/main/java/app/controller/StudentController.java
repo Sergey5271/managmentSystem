@@ -30,39 +30,25 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/list")
-    public String listStudents(Model model) {
-        List<Student> students = studentService.getStudents();
-        model.addAttribute("students", students);
-        return "list-students";
-    }
-
-    @RequestMapping(value = {"", "/{page}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list", "/{page}"}, method = RequestMethod.GET)
     public ModelAndView showUser(@PathVariable(required = false, name = "page") String page, HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mv = new ModelAndView();
         PagedListHolder<Student> userList;
         if (page == null) {
             userList = new PagedListHolder<>();
             List<Student> usersList = studentService.getStudents();
-            // Setting the source for PagedListHolder
             userList.setSource(usersList);
-            userList.setPageSize(2);
-            // Setting PagedListHolder instance to session
+            userList.setPageSize(5);
             request.getSession().setAttribute("userList", userList);
         } else if (page.equals("prev")) {
-            // get the user list from session
             userList = (PagedListHolder<Student>) request.getSession().getAttribute("userList");
-            // switch to previous page
             userList.previousPage();
         } else if (page.equals("next")) {
             userList = (PagedListHolder<Student>) request.getSession().getAttribute("userList");
-            // switch to next page
             userList.nextPage();
         } else {
             int pageNum = Integer.parseInt(page);
             userList = (PagedListHolder<Student>) request.getSession().getAttribute("userList");
-            // set the current page number
-            // page number starts from zero in PagedListHolder that's why subtracting 1
             userList.setPage(pageNum - 1);
         }
         mv.setViewName("list-students");
