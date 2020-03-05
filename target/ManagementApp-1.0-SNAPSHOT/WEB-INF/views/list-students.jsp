@@ -17,6 +17,14 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        a,
+        a:hover{
+             text-decoration: none;
+             color: black;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,7 +61,6 @@
             <tbody>
 
             <c:forEach items="${userPageList.pageList}" var="tempStudent">
-
                 <c:url var="updateLink" value="/student/updateForm">
                     <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
@@ -62,54 +69,61 @@
                     <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
 
-                <tr>
+                <tr id="${tempStudent.id}">
                     <td>${tempStudent.firstName}</td>
                     <td>${tempStudent.lastName}</td>
                     <td>${tempStudent.age}</td>
                     <td>${tempStudent.dateOfBirthday}</td>
                     <td>${tempStudent.faculty}</td>
                     <td>
-                        <a type="button" href="${updateLink}">Edit</a>
-                        <a href="${deleteLink}">Delete</a>
+                        <a type="button" class="updater">Edit</a>
+                        <a type="button" href="${deleteLink}">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
-<div id="pagination">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <c:forEach begin="1" end="${userPageList.pageCount}" step="1" varStatus="tagStatus">
-                <c:choose>
-                    <%-- In PagedListHolder page count starts from 0 --%>
-                    <c:when test="${(userPageList.page + 1) == tagStatus.index}">
-                        <li class="page-item">
-                            <a class="page-link">${tagStatus.index}</a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="page-item">
-                            <c:url value="/student/${tagStatus.index}" var="url"/>
-                            <a class="page-link" href='<c:out value="${url}" />'>${tagStatus.index}</a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </ul>
-    </nav>
+    <div id="pagination">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <c:forEach begin="1" end="${userPageList.pageCount}" step="1" varStatus="tagStatus">
+                    <c:choose>
+                        <%-- In PagedListHolder page count starts from 0 --%>
+                        <c:when test="${(userPageList.page + 1) == tagStatus.index}">
+                            <li class="page-item">
+                                <a class="page-link">${tagStatus.index}</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <c:url value="/student/${tagStatus.index}" var="url"/>
+                                <a class="page-link" href='<c:out value="${url}" />'>${tagStatus.index}</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </ul>
+        </nav>
+    </div>
 </div>
-</div>
+
+
 <script>
     $(document).ready(function(){
+
     $("#loader").click(function(){
                 // Load the page into the div
         $("#resultreturn").load("showForm");
-                // Show the modal dialog
-        $("#resultreturn").dialog({ modal: true });
+    });
+
+    $(".updater").click(function(){
+    var id = $(this).closest('tr').attr('id')
+        $("#resultreturn").load('updateForm?studentId='+ id);
 
     });
 });
+
 </script>
 
 </body>

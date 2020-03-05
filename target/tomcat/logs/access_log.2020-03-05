@@ -1,0 +1,11 @@
+127.0.0.1 - - [05/Mar/2020:12:43:22 +0200] "GET /student/list HTTP/1.1" 200 6999 http-bio-8080-exec-1 887
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:22 +0200] "GET /student/list HTTP/1.1" 200 6999 http-bio-8080-exec-3 887
+127.0.0.1 - - [05/Mar/2020:12:43:22 +0200] "GET /student/list HTTP/1.1" 200 6999 http-bio-8080-exec-2 887
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:22 +0200] "GET /student/list HTTP/1.1" 200 6999 http-bio-8080-exec-4 52
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:25 +0200] "GET /student/updateForm?studentId=5 HTTP/1.1" 200 2996 http-bio-8080-exec-8 100
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:26 +0200] "GET /student/list HTTP/1.1" 200 6999 http-bio-8080-exec-10 9
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:28 +0200] "GET /student/delete;jsessionid=D523010EAFC4DA2C291F6B0E60E7DE84?studentId=8 HTTP/1.1" 302 - http-bio-8080-exec-10 31
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:28 +0200] "GET /student/list;jsessionid=D523010EAFC4DA2C291F6B0E60E7DE84 HTTP/1.1" 200 6589 http-bio-8080-exec-10 7
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:31 +0200] "GET /student/2;jsessionid=D523010EAFC4DA2C291F6B0E60E7DE84 HTTP/1.1" 200 6592 http-bio-8080-exec-10 4
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:32 +0200] "GET /student/1;jsessionid=D523010EAFC4DA2C291F6B0E60E7DE84 HTTP/1.1" 200 6589 http-bio-8080-exec-10 2
+0:0:0:0:0:0:0:1 - - [05/Mar/2020:12:43:48 +0200] "GET /student/2;jsessionid=D523010EAFC4DA2C291F6B0E60E7DE84 HTTP/1.1" 200 6592 http-bio-8080-exec-10 3
