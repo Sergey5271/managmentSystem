@@ -9,4 +9,5 @@ app\excel\ExcelBuilder.class
 app\service\impl\StudentServiceImpl.class
 app\controller\ReportController.class
 app\config\WebMvcConfig.class
+app\validation\ErrorMessage.class
 app\config\ApplicationContext.class

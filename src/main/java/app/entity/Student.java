@@ -1,5 +1,6 @@
 package app.entity;
 
+import app.validation.ErrorMessage;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -16,20 +17,18 @@ import javax.validation.constraints.Size;
 public class Student extends AbstractEntity {
 
     @Column(name = "first_name")
-    @Size(min = 1, max = 20, message =
-            "About Me must be between 1 and 50 characters")
+    @Size(min = 1, max = 20, message = ErrorMessage.NAME_SIZE)
     @NotNull
     private String firstName;
 
     @Column(name = "last_name")
-    @Size(min = 1, max = 20, message =
-            "About Me must be between 1 and 50 characters")
+    @Size(min = 1, max = 20, message = ErrorMessage.NAME_SIZE)
     @NotNull
     private String lastName;
 
     @Column(name = "age")
-    @Min(value = 1, message = "Age should not be less than 18")
-    @Max(value = 150, message = "Age should not be greater than 150")
+    @Min(value = 1, message = ErrorMessage.MIN_SIZE)
+    @Max(value = 150, message = ErrorMessage.MAX_SIZE)
     @NotNull
     private Integer age;
 
@@ -39,7 +38,7 @@ public class Student extends AbstractEntity {
 
     @Column(name = "faculty")
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 20, message = ErrorMessage.FACULTY_SIZE)
     private String faculty;
 
     public Student() {

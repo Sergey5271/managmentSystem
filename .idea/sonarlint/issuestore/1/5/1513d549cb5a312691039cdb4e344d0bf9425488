@@ -1,5 +1,5 @@
 
-TWeb:TableWithoutCaptionCheck'" Add a description to this table.(¼ëùÏşÿÿÿÿ8¨ŸİªŠ.
-a	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ8¨ŸİªŠ.
-_	Web:S5255"DAdd an "aria-label" or "aria-labbelledby" attribute to this element.(¤“ì08¨ŸİªŠ.
-jWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8¨ŸİªŠ.
+jWeb:DoctypePresenceCheck":Insert a <!DOCTYPE> declaration to before this <html> tag.(œ÷Ãûÿÿÿÿ8Å´ó®Š.
+a	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷Ãûÿÿÿÿ8Å´ó®Š.
+_	Web:S5255 "DAdd an "aria-label" or "aria-labbelledby" attribute to this element.(¤“ì08•‘óÏŠ.
+TWeb:TableWithoutCaptionCheck2" Add a description to this table.(¼ëùÏşÿÿÿÿ8Í‰¶Š.
